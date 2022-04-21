@@ -29,6 +29,9 @@ list(APPEND TEST_LIBRARIES pico_stdlib)
 #list(APPEND TEST_LIBRARIES hardware_flash)
 #list(APPEND TEST_LIBRARIES hardware_sync)
 
+list(APPEND TEST_LIBRARIES Button_MAIN)
+list(APPEND TEST_INCLUDE_DIRS ${ROOT_DIR}/main/include)
+
 # Create Executable File
 include_directories(${TEST_INCLUDES_DIR})
 add_executable(${PROJECT_NAME}_TEST ${TEST_SOURCES})
@@ -37,7 +40,7 @@ add_executable(${PROJECT_NAME}_TEST ${TEST_SOURCES})
 target_include_directories(${PROJECT_NAME}_TEST PUBLIC ${TEST_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME}_TEST PRIVATE ${TEST_LIBRARIES})
 
-#pico_enable_stdio_usb(${PROJECT_NAME}_TEST 1)
+pico_enable_stdio_usb(${PROJECT_NAME}_TEST 1)
 pico_enable_stdio_uart(${PROJECT_NAME}_TEST 0)
 
 pico_add_extra_outputs(${PROJECT_NAME}_TEST)
