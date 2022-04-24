@@ -4,6 +4,7 @@
 #include "hardware/gpio.h"
 #include "pico/time.h"
 
+#define DEBOUNCE_TIME 150
 #define LONG_PRESS_TIME 1000
 
 enum class ButtonState

@@ -38,6 +38,12 @@ void Button::tick()
 		if (gpio_get(pin) == false)
 		{
 			const long time = to_ms_since_boot(get_absolute_time());
+			if(time - lastTime < DEBOUNCE_TIME)
+			{
+				state = ButtonState::None;
+				break;
+			}
+
 			if (lastTime + LONG_PRESS_TIME >= time)
 			{
 				state = ButtonState::ShortPress;
